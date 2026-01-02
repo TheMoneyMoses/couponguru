@@ -1,8 +1,7 @@
-
 {
   "expo": {
-    "name": "CVS Coupon Haul",
-    "slug": "cvs-coupon-haul",
+    "name": "Coupon Guru",
+    "slug": "Coupon Guru",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/natively-dark.png",
@@ -63,7 +62,9 @@
       "typedRoutes": true
     },
     "extra": {
-      "router": {}
+      "router": {},
+      "backendUrl": "https://s96f48cx7763ywqfbe94fzbwnfm6nps7.app.specular.dev"
     }
-  }
+  },
+  "scheme": "Coupon Guru"
 }
