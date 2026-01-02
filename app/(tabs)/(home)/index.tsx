@@ -72,18 +72,64 @@ export default function HomeScreen() {
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
+          {/* Quick Actions */}
+          <View style={styles.quickActionsContainer}>
+            <TouchableOpacity 
+              style={styles.quickActionCard}
+              onPress={() => router.push('/deal-recommendations')}
+            >
+              <View style={styles.quickActionIcon}>
+                <IconSymbol 
+                  ios_icon_name="sparkles" 
+                  android_material_icon_name="star" 
+                  size={28} 
+                  color={colors.primary} 
+                />
+              </View>
+              <Text style={styles.quickActionTitle}>AI Deal Finder</Text>
+              <Text style={styles.quickActionSubtitle}>Get personalized deals</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+              style={styles.quickActionCard}
+              onPress={() => router.push('/haul-builder')}
+            >
+              <View style={styles.quickActionIcon}>
+                <IconSymbol 
+                  ios_icon_name="plus.circle" 
+                  android_material_icon_name="add-circle" 
+                  size={28} 
+                  color={colors.accent} 
+                />
+              </View>
+              <Text style={styles.quickActionTitle}>New Haul</Text>
+              <Text style={styles.quickActionSubtitle}>Build your shopping list</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Beginner Banner */}
           <TouchableOpacity 
-            style={styles.createHaulButton}
-            onPress={() => router.push('/haul-builder')}
+            style={styles.beginnerBanner}
+            onPress={() => router.push('/(tabs)/beginner-guide')}
           >
             <IconSymbol 
-              ios_icon_name="plus.circle.fill" 
-              android_material_icon_name="add-circle" 
+              ios_icon_name="book" 
+              android_material_icon_name="school" 
               size={32} 
-              color={colors.primary} 
+              color="#FFFFFF" 
             />
-            <Text style={styles.createHaulText}>Create New Haul</Text>
+            <View style={styles.beginnerBannerText}>
+              <Text style={styles.beginnerBannerTitle}>New to Couponing?</Text>
+              <Text style={styles.beginnerBannerSubtitle}>
+                Learn how to save 50-90% on groceries →
+              </Text>
+            </View>
           </TouchableOpacity>
+
+          {/* Hauls List */}
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Recent Hauls</Text>
+          </View>
 
           {hauls.map((haul) => (
             <TouchableOpacity 
@@ -186,23 +232,71 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingBottom: 100,
   },
-  createHaulButton: {
+  quickActionsContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    gap: 12,
+    marginBottom: 16,
+  },
+  quickActionCard: {
+    flex: 1,
     backgroundColor: colors.card,
     borderRadius: 12,
-    padding: 20,
-    marginBottom: 16,
-    borderWidth: 2,
-    borderColor: colors.primary,
-    borderStyle: 'dashed',
+    padding: 16,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
   },
-  createHaulText: {
-    fontSize: 18,
+  quickActionIcon: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: colors.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 12,
+  },
+  quickActionTitle: {
+    fontSize: 16,
     fontWeight: '600',
-    color: colors.primary,
-    marginLeft: 12,
+    color: colors.text,
+    textAlign: 'center',
+    marginBottom: 4,
+  },
+  quickActionSubtitle: {
+    fontSize: 12,
+    color: colors.textSecondary,
+    textAlign: 'center',
+  },
+  beginnerBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.primary,
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 24,
+    gap: 16,
+  },
+  beginnerBannerText: {
+    flex: 1,
+  },
+  beginnerBannerTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#FFFFFF',
+    marginBottom: 4,
+  },
+  beginnerBannerSubtitle: {
+    fontSize: 14,
+    color: '#FFFFFF',
+    opacity: 0.9,
+  },
+  sectionHeader: {
+    marginBottom: 12,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: colors.text,
   },
   haulCard: {
     backgroundColor: colors.card,
